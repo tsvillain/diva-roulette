@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 Widget textData(String text) {
-  return Expanded(
-    child: Text(
-      '$text',
-      maxLines: 5,
-      overflow: TextOverflow.fade,
-      textAlign: TextAlign.left,
-    ),
+  return Text(
+    '$text',
+    maxLines: 5,
+    overflow: TextOverflow.clip,
+    textAlign: TextAlign.left,
   );
 }
 
@@ -26,6 +24,30 @@ Widget imageLeft(AssetImage image, String text, BuildContext context) {
         width: 50,
         height: 50,
         fit: BoxFit.contain,
+      ),
+    ],
+  );
+}
+
+Widget aboutCard(String title, String content) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        '$title',
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          color: Colors.red,
+          fontSize: 34,
+        ),
+      ),
+      SizedBox(height: 20),
+      Text(
+        '$content',
+        textAlign: TextAlign.left,
+        maxLines: 5,
       ),
     ],
   );
