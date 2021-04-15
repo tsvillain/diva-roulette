@@ -28,7 +28,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
               LoginCard(
                 size: _size.width / 1.5,
                 btnFunc: () {
-                  Navigator.pushNamed(context, ConfirmCreationPageRoute);
+                  Navigator.pushNamed(context, LoginPageRoute);
                 },
                 btnText: 'ACCESS',
                 color: Colors.deepPurple,
@@ -40,7 +40,9 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
               SizedBox(height: 20),
               LoginCard(
                 size: _size.width / 1.5,
-                btnFunc: () {},
+                btnFunc: () {
+                  Navigator.pushNamed(context, ConfirmCreationPageRoute);
+                },
                 btnText: 'CREATE NEW',
                 color: Colors.red[300],
                 firstText: 'NEW TO',

@@ -1,3 +1,4 @@
+import 'package:diva_roulette/helpers/routeName.dart';
 import 'package:diva_roulette/utils/widgets/termsCard.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -46,7 +47,9 @@ class ConfirmCard extends StatelessWidget {
               ),
               MaterialButton(
                 hoverColor: Colors.transparent,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginPageRoute);
+                },
                 child: RichText(
                   text: TextSpan(children: [
                     TextSpan(
@@ -66,7 +69,9 @@ class ConfirmCard extends StatelessWidget {
               ),
               GFButton(
                 color: Colors.red[400],
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, AccountCreationPageRoute);
+                },
                 text: 'GENERATE KEY PHASE',
                 shape: GFButtonShape.standard,
               ),

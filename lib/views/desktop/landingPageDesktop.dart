@@ -30,7 +30,7 @@ class _LandingPageDesktopState extends State<LandingPageDesktop> {
                 LoginCard(
                   size: _size.width / 4,
                   btnFunc: () {
-                    Navigator.pushNamed(context, ConfirmCreationPageRoute);
+                    Navigator.pushNamed(context, LoginPageRoute);
                   },
                   btnText: 'ACCESS',
                   color: Colors.deepPurple,
@@ -42,7 +42,9 @@ class _LandingPageDesktopState extends State<LandingPageDesktop> {
                 SizedBox(width: 20),
                 LoginCard(
                   size: _size.width / 4,
-                  btnFunc: () {},
+                  btnFunc: () {
+                    Navigator.pushNamed(context, ConfirmCreationPageRoute);
+                  },
                   btnText: 'CREATE NEW',
                   color: Colors.red[300],
                   firstText: 'NEW TO',
