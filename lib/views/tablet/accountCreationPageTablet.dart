@@ -1,6 +1,10 @@
+import 'dart:math';
+
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:diva_roulette/views/tablet/verifyDialogTablet.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:ndialog/ndialog.dart';
 
 class AccountCreationPageTablet extends StatefulWidget {
   const AccountCreationPageTablet({
@@ -160,7 +164,30 @@ class _AccountCreationPageTabletState extends State<AccountCreationPageTablet> {
                         ],
                       ),
                       GFButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          List<int> randomBlank = [];
+                          while (randomBlank.length < 4) {
+                            int temp =
+                                (Random().nextInt(dummyList.length - 1) + 1);
+                            if (!randomBlank.contains(temp)) {
+                              randomBlank.add(temp);
+                            }
+                          }
+                          print("blank List:: " + randomBlank.toString());
+                          // Verify Mnemonic Dialog
+                          showDialog(
+                            context: context,
+                            builder: (_) => DialogBackground(
+                              dismissable: false,
+                              dialog: VerifyDialogTablet(
+                                phaseWord: dummyList,
+                                randomBlank: randomBlank,
+                                size: _size,
+                              ),
+                              blur: 5,
+                            ),
+                          );
+                        },
                         text: 'LOGIN',
                         color: Colors.red[400],
                       ),
