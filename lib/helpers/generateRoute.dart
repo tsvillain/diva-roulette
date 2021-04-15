@@ -1,4 +1,5 @@
 import 'package:diva_roulette/helpers/routeName.dart';
+import 'package:diva_roulette/views/accountCreationPage.dart';
 import 'package:diva_roulette/views/confirmCreationPage.dart';
 import 'package:diva_roulette/views/landingPage.dart';
 import 'package:diva_roulette/views/pageNotFound.dart';
@@ -11,6 +12,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       break;
     case ConfirmCreationPageRoute:
       return MaterialPageRoute(builder: (context) => ConfirmCreationPage());
+    case AccountCreationPageRoute:
+      return MaterialPageRoute(builder: (context) => AccountCreationPage());
     default:
       return MaterialPageRoute(
           builder: (context) => PageNotFound(name: settings.name));
