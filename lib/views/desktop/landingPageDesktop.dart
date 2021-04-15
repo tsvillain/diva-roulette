@@ -1,10 +1,10 @@
+import 'package:diva_roulette/helpers/routeName.dart';
 import 'package:diva_roulette/utils/widgets/cardCollection.dart';
 import 'package:diva_roulette/utils/widgets/contentCard.dart';
 import 'package:diva_roulette/utils/widgets/footer.dart';
 import 'package:diva_roulette/utils/widgets/loginCard.dart';
-import 'package:flutter/gestures.dart';
+import 'package:diva_roulette/utils/widgets/termsCard.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageDesktop extends StatefulWidget {
   @override
@@ -21,53 +21,41 @@ class _LandingPageDesktopState extends State<LandingPageDesktop> {
       children: [
         Padding(
           padding: const EdgeInsets.all(50.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              LoginCard(
-                size: _size.width / 4,
-                btnFunc: null,
-                btnText: 'ACCESS',
-                color: Colors.deepPurple,
-                firstText: 'WELCOME BACK!',
-                icon: Icon(Icons.login_rounded),
-                secondText: 'Access your existence',
-                btnColor: Colors.deepPurple,
-              ),
-              SizedBox(width: 20),
-              LoginCard(
-                size: _size.width / 4,
-                btnFunc: null,
-                btnText: 'CREATE NEW',
-                color: Colors.red[300],
-                firstText: 'NEW TO',
-                icon: Icon(Icons.app_registration),
-                secondText: 'Create a new',
-                btnColor: Colors.red[300],
-              ),
-            ],
+          child: Container(
+            height: _size.height / 1.3,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                LoginCard(
+                  size: _size.width / 4,
+                  btnFunc: () {
+                    Navigator.pushNamed(context, ConfirmCreationPageRoute);
+                  },
+                  btnText: 'ACCESS',
+                  color: Colors.deepPurple,
+                  firstText: 'WELCOME BACK!',
+                  icon: Icon(Icons.login_rounded),
+                  secondText: 'Access your existence',
+                  btnColor: Colors.deepPurple,
+                ),
+                SizedBox(width: 20),
+                LoginCard(
+                  size: _size.width / 4,
+                  btnFunc: () {},
+                  btnText: 'CREATE NEW',
+                  color: Colors.red[300],
+                  firstText: 'NEW TO',
+                  icon: Icon(Icons.app_registration),
+                  secondText: 'Create a new',
+                  btnColor: Colors.red[300],
+                ),
+              ],
+            ),
           ),
         ),
         Center(
-          child: RichText(
-            text: TextSpan(children: [
-              TextSpan(text: "By using this application you agree to the "),
-              TextSpan(
-                text: "Terms of Use",
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  color: Colors.blueAccent,
-                ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    // Get mouse hover effect
-                    // TODO add Terms link
-                    launch('https://google.com');
-                  },
-              ),
-            ]),
-          ),
+          child: TermsCard(),
         ),
         Divider(),
         // Second Section

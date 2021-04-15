@@ -1,10 +1,10 @@
+import 'package:diva_roulette/helpers/routeName.dart';
 import 'package:diva_roulette/utils/widgets/cardCollection.dart';
 import 'package:diva_roulette/utils/widgets/contentCard.dart';
 import 'package:diva_roulette/utils/widgets/footer.dart';
 import 'package:diva_roulette/utils/widgets/loginCard.dart';
-import 'package:flutter/gestures.dart';
+import 'package:diva_roulette/utils/widgets/termsCard.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageMobile extends StatefulWidget {
   @override
@@ -27,7 +27,9 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
             children: [
               LoginCard(
                 size: _size.width / 1.5,
-                btnFunc: null,
+                btnFunc: () {
+                  Navigator.pushNamed(context, ConfirmCreationPageRoute);
+                },
                 btnText: 'ACCESS',
                 color: Colors.deepPurple,
                 firstText: 'WELCOME BACK!',
@@ -38,7 +40,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
               SizedBox(height: 20),
               LoginCard(
                 size: _size.width / 1.5,
-                btnFunc: null,
+                btnFunc: () {},
                 btnText: 'CREATE NEW',
                 color: Colors.red[300],
                 firstText: 'NEW TO',
@@ -50,24 +52,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
           ),
         ),
         Center(
-          child: RichText(
-            text: TextSpan(children: [
-              TextSpan(text: "By using this application you agree to the "),
-              TextSpan(
-                text: "Terms of Use",
-                style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  color: Colors.blueAccent,
-                ),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    // Get mouse hover effect
-                    // TODO add Terms link
-                    launch('https://google.com');
-                  },
-              ),
-            ]),
-          ),
+          child: TermsCard(),
         ),
         Divider(),
         // Second Section

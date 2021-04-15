@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/button/gf_button.dart';
 
 class LoginCard extends StatelessWidget {
   final double size;
@@ -74,19 +75,11 @@ class LoginCard extends StatelessWidget {
               ),
             ),
             Expanded(flex: 1, child: SizedBox()),
-            InkWell(
-              onTap: btnFunc,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: btnColor,
-                ),
-                padding: EdgeInsets.all(8),
-                child: Text('$btnText',
-                    style: TextStyle(
-                      color: Colors.white,
-                    )),
-              ),
+            GFButton(
+              onPressed: btnFunc,
+              color: btnColor,
+              text: "$btnText",
+              textColor: Colors.white,
             ),
           ],
         ),
