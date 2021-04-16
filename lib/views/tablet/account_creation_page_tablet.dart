@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:diva_roulette/views/tablet/verifyDialogTablet.dart';
+import 'package:diva_roulette/views/tablet/verify_dialog_tablet.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:ndialog/ndialog.dart';

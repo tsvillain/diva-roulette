@@ -1,6 +1,6 @@
-import 'package:diva_roulette/helpers/routeName.dart';
+import 'package:diva_roulette/helpers/route_name.dart';
 import 'package:flutter/material.dart';
-import 'package:diva_roulette/helpers/generateRoute.dart' as router;
+import 'package:diva_roulette/helpers/generate_route.dart' as router;
 
 void main() {
   runApp(MyApp());
