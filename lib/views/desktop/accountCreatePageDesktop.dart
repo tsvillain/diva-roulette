@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:diva_roulette/theme.dart';
 import 'package:diva_roulette/views/desktop/verifyDialogDesktop.dart';
+import 'package:diva_roulette/views/widgets/word_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:ndialog/ndialog.dart';
@@ -21,7 +23,7 @@ class _AccountCreationPageDesktopState
   final dummyList = [
     "someone",
     "number",
-    "moring",
+    "morning",
     "twice",
     "cycle",
     "taxi",
@@ -45,6 +47,7 @@ class _AccountCreationPageDesktopState
     "toward"
   ];
   Size _size;
+
   @override
   Widget build(BuildContext context) {
     _size = MediaQuery.of(context).size;
@@ -59,15 +62,15 @@ class _AccountCreationPageDesktopState
             height: _size.height / 1.3,
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(4),
+                    color: AppTheme.purpleBG,
                   ),
-                  padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(AppTheme.defaultPadding),
                   child: GridView.builder(
                     shrinkWrap: true,
                     itemCount: 24,
@@ -77,53 +80,49 @@ class _AccountCreationPageDesktopState
                         mainAxisSpacing: 5,
                         crossAxisSpacing: 5),
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(3),
-                        ),
-                        padding: EdgeInsets.all(5),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('${index + 1}.'),
-                            Text('${dummyList[index]}')
-                          ],
-                        ),
+                      return WordWidget(
+                        pos: index,
+                        word: dummyList[index],
                       );
                     },
                   ),
                 ),
+                Padding(padding: EdgeInsets.only(top: AppTheme.defaultPadding)),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(AppTheme.defaultPadding),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(4),
+                    color: AppTheme.purpleBG,
                   ),
                   child: Text(
-                      "${dummyList.toString().replaceAll(RegExp(r'[,\[\]]'), '')}"),
+                    "${dummyList.toString().replaceAll(RegExp(r'[,\[\]]'), '')}",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
                 ),
-                GFButton(
+                Padding(padding: EdgeInsets.only(top: AppTheme.defaultPadding)),
+                ElevatedButton.icon(
                   onPressed: () {},
-                  text: 'REGENERATE',
+                  label: Padding(
+                    padding:
+                        const EdgeInsets.only(right: AppTheme.paddingMedium),
+                    child: Text('REGENERATE'),
+                  ),
                   icon: Icon(
                     Icons.refresh_rounded,
                     color: Colors.white,
                   ),
-                  color: Colors.deepPurple,
                 ),
               ],
             ),
           ),
           SizedBox(width: 20),
           Container(
-            padding: EdgeInsets.all(40),
+            padding: EdgeInsets.all(AppTheme.paddingLarge),
             width: _size.width / 3,
             height: _size.height / 1.3,
             child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
                   mainAxisSize: MainAxisSize.min,
