@@ -18,13 +18,13 @@ class TermsCard extends StatelessWidget {
         text: TextSpan(children: [
           TextSpan(
               text: "By using this application you agree to the ",
-              style: TextStyle(fontSize: 10)),
+              style: Theme.of(context).textTheme.bodyText2),
           TextSpan(
             text: "Terms of Use",
-            style: TextStyle(
+            style: Theme.of(context).textTheme.bodyText2.copyWith(
               decoration: TextDecoration.underline,
-              color: Colors.blueAccent,
-              fontSize: 10,
+              color: Colors.purple,
+              fontWeight: FontWeight.w400
             ),
           ),
         ]),

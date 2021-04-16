@@ -1,4 +1,5 @@
 import 'package:diva_roulette/helpers/routeName.dart';
+import 'package:diva_roulette/theme.dart';
 import 'package:diva_roulette/utils/widgets/cardCollection.dart';
 import 'package:diva_roulette/utils/widgets/contentCard.dart';
 import 'package:diva_roulette/utils/widgets/footer.dart';
@@ -13,6 +14,7 @@ class LandingPageDesktop extends StatefulWidget {
 
 class _LandingPageDesktopState extends State<LandingPageDesktop> {
   Size _size;
+
   @override
   Widget build(BuildContext context) {
     _size = MediaQuery.of(context).size;
@@ -28,27 +30,34 @@ class _LandingPageDesktopState extends State<LandingPageDesktop> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 LoginCard(
-                  size: _size.width / 4,
+                  size: _size.width / 3.5,
                   btnFunc: () {
                     Navigator.pushNamed(context, LoginPageRoute);
                   },
                   btnText: 'ACCESS',
-                  color: Colors.deepPurple,
+                  color: Theme.of(context).primaryColor,
                   firstText: 'WELCOME BACK!',
-                  icon: Icon(Icons.login_rounded),
+                  icon: Icon(
+                    Icons.login_rounded,
+                    color: Colors.white,
+                  ),
                   secondText: 'Access your existence',
-                  btnColor: Colors.deepPurple,
+                  btnColor: Theme.of(context).primaryColor,
                 ),
                 SizedBox(width: 20),
                 LoginCard(
-                  size: _size.width / 4,
+                  size: _size.width / 3.5,
                   btnFunc: () {
                     Navigator.pushNamed(context, ConfirmCreationPageRoute);
                   },
                   btnText: 'CREATE NEW',
                   color: Colors.red[300],
                   firstText: 'NEW TO',
-                  icon: Icon(Icons.app_registration),
+                  avatarColor: Colors.white,
+                  icon: Icon(
+                    Icons.app_registration,
+                    color: Theme.of(context).accentColor,
+                  ),
                   secondText: 'Create a new',
                   btnColor: Colors.red[300],
                 ),

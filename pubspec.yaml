@@ -29,6 +29,7 @@ dependencies:
   ndialog: ^4.0.1
   responsive_builder: ^0.4.1
   url_launcher: ^6.0.3
+  google_fonts: ^2.0.0
 
 dev_dependencies:
   flutter_test:
