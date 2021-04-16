@@ -1,9 +1,9 @@
-import 'package:diva_roulette/helpers/routeName.dart';
-import 'package:diva_roulette/utils/widgets/cardCollection.dart';
-import 'package:diva_roulette/utils/widgets/contentCard.dart';
+import 'package:diva_roulette/helpers/route_name.dart';
+import 'package:diva_roulette/utils/widgets/card_collection.dart';
+import 'package:diva_roulette/utils/widgets/content_card.dart';
 import 'package:diva_roulette/utils/widgets/footer.dart';
-import 'package:diva_roulette/utils/widgets/loginCard.dart';
-import 'package:diva_roulette/utils/widgets/termsCard.dart';
+import 'package:diva_roulette/utils/widgets/login_card.dart';
+import 'package:diva_roulette/utils/widgets/terms_card.dart';
 import 'package:flutter/material.dart';
 
 class LandingPageMobile extends StatefulWidget {
