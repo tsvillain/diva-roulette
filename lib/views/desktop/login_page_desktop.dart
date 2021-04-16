@@ -1,3 +1,5 @@
+import 'package:diva_roulette/theme.dart';
+import 'package:diva_roulette/views/widgets/preview_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 
@@ -13,6 +15,7 @@ class LoginPageDesktop extends StatefulWidget {
 class _LoginPageDesktopState extends State<LoginPageDesktop> {
   Size size;
   List<String> phaseWord = [];
+
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -20,13 +23,14 @@ class _LoginPageDesktopState extends State<LoginPageDesktop> {
       child: Padding(
         padding: const EdgeInsets.all(50.0),
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(AppTheme.paddingLarge),
           width: size.width / 1.5,
           decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(5),
+            color: AppTheme.purpleBG,
+            borderRadius: BorderRadius.circular(4),
           ),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -81,55 +85,10 @@ class _LoginPageDesktopState extends State<LoginPageDesktop> {
                   ],
                 ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: AppTheme.paddingMedium),
               Expanded(
                 flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Preview',
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      itemCount: 24,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          childAspectRatio: 3 / 1,
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10),
-                      itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(3),
-                          ),
-                          padding: EdgeInsets.all(5),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('${index + 1}.'),
-                              Expanded(
-                                child: Center(
-                                  child: Text(
-                                    phaseWord.length > index
-                                        ? "${phaseWord[index]}"
-                                        : "",
-                                    style: TextStyle(fontWeight: FontWeight.bold),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                child: PreviewWidget(phaseWord: phaseWord,),
               ),
             ],
           ),
