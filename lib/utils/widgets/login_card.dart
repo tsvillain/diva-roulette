@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:diva_roulette/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 
@@ -11,6 +12,7 @@ class LoginCard extends StatelessWidget {
   final Icon icon;
   final String btnText;
   final Function btnFunc;
+  final Color avatarColor;
 
   const LoginCard({
     Key key,
@@ -22,19 +24,20 @@ class LoginCard extends StatelessWidget {
     @required this.icon,
     @required this.btnText,
     @required this.btnFunc,
+    this.avatarColor
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(4),
+        color: AppTheme.purpleBG,
       ),
       width: size,
       height: size,
       child: Padding(
-        padding: const EdgeInsets.all(40.0),
+        padding: const EdgeInsets.all(AppTheme.paddingLarge),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,36 +53,33 @@ class LoginCard extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: CircleAvatar(
-                      backgroundColor: color,
+                      backgroundColor: avatarColor ?? color,
                       child: icon,
                       minRadius: 20,
-                      maxRadius: 35,
+                      maxRadius: 32,
                     ),
                   ),
+                  Padding(
+                      padding: EdgeInsets.only(top: AppTheme.paddingSmall)),
                   AutoSizeText(
                     "$firstText",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.deepPurple[300],
-                    ),
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   AutoSizeText(
                     "$secondText",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.deepPurple,
-                    ),
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                 ],
               ),
             ),
             Expanded(flex: 1, child: SizedBox()),
-            GFButton(
+            ElevatedButton(
               onPressed: btnFunc,
-              color: btnColor,
-              text: "$btnText",
-              textColor: Colors.white,
+              child: Padding(
+                padding: EdgeInsets.only(right: AppTheme.paddingLarge),
+                child: Text(btnText),
+              ),
+              style: ElevatedButton.styleFrom(primary: btnColor),
             ),
           ],
         ),

@@ -1,4 +1,4 @@
-import 'package:diva_roulette/utils/widgets/confirmCard.dart';
+import 'package:diva_roulette/utils/widgets/confirm_card.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

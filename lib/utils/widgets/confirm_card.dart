@@ -1,5 +1,5 @@
-import 'package:diva_roulette/helpers/routeName.dart';
-import 'package:diva_roulette/utils/widgets/termsCard.dart';
+import 'package:diva_roulette/helpers/route_name.dart';
+import 'package:diva_roulette/utils/widgets/terms_card.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 

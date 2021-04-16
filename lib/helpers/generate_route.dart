@@ -1,9 +1,9 @@
-import 'package:diva_roulette/helpers/routeName.dart';
-import 'package:diva_roulette/views/accountCreationPage.dart';
-import 'package:diva_roulette/views/confirmCreationPage.dart';
-import 'package:diva_roulette/views/landingPage.dart';
-import 'package:diva_roulette/views/loginPage.dart';
-import 'package:diva_roulette/views/pageNotFound.dart';
+import 'package:diva_roulette/helpers/route_name.dart';
+import 'package:diva_roulette/views/account_creation_page.dart';
+import 'package:diva_roulette/views/confirm_creation_page.dart';
+import 'package:diva_roulette/views/landing_page.dart';
+import 'package:diva_roulette/views/login_page.dart';
+import 'package:diva_roulette/views/page_not_found.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {

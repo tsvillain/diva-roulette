@@ -1,10 +1,10 @@
-import 'package:diva_roulette/views/desktop/loginPageDesktop.dart';
-import 'package:diva_roulette/views/mobile/loginPageMobile.dart';
-import 'package:diva_roulette/views/tablet/loginPageTablet.dart';
+import 'package:diva_roulette/views/desktop/account_create_page_desktop.dart';
+import 'package:diva_roulette/views/tablet/account_creation_page_tablet.dart';
+import 'package:diva_roulette/views/mobile/account_creation_page_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class LoginPage extends StatelessWidget {
+class AccountCreationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,12 +12,12 @@ class LoginPage extends StatelessWidget {
         child: Scrollbar(
           child: ResponsiveBuilder(builder: (context, sizingInformation) {
             if (sizingInformation.deviceScreenType == DeviceScreenType.mobile) {
-              return LoginPageMobile();
+              return AccountCreationPageMobile();
             } else if (sizingInformation.deviceScreenType ==
                 DeviceScreenType.tablet) {
-              return LoginPageTablet();
+              return AccountCreationPageTablet();
             } else {
-              return LoginPageDesktop();
+              return AccountCreationPageDesktop();
             }
           }),
         ),
