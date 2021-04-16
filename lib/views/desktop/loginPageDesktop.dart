@@ -39,7 +39,7 @@ class _LoginPageDesktopState extends State<LoginPageDesktop> {
                   children: [
                     Text(
                       'Enter your MNEMONIC phrase',
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -69,11 +69,10 @@ class _LoginPageDesktopState extends State<LoginPageDesktop> {
                       onPressed: phaseWord.length == 24 ? () {} : null,
                       text: 'ACCESS',
                     ),
-                    MaterialButton(
+                    TextButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      hoverColor: Colors.transparent,
                       child: Text('Cancel',
                           textAlign: TextAlign.left,
                           style:
@@ -113,12 +112,16 @@ class _LoginPageDesktopState extends State<LoginPageDesktop> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('${index + 1}.'),
-                              Text(
-                                phaseWord.length > index
-                                    ? "${phaseWord[index]}"
-                                    : "",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                                overflow: TextOverflow.ellipsis,
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    phaseWord.length > index
+                                        ? "${phaseWord[index]}"
+                                        : "",
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
                               )
                             ],
                           ),
