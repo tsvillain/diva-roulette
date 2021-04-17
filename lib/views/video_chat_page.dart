@@ -101,181 +101,168 @@ class _VideoChatScreenState extends State<VideoChatScreen> {
         children: [
           Expanded(
             flex: 3,
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Padding(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/image/sample_people_1.jpg'),
-                        fit: BoxFit.cover,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black54,
+                        ),
+                        child: Text(
+                          'Balance: 10000\$',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                      color: Colors.grey[400],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Stack(
-                      fit: StackFit.expand,
-                      alignment: Alignment.center,
-                      children: [
-                        // account balance
-                        Positioned(
-                          top: _balancePosition.dy,
-                          left: _balancePosition.dx,
-                          child: Draggable(
-                            onDraggableCanceled:
-                                (Velocity velocity, Offset offset) {
-                              double _top = 0, _left = 0;
-                              if ((offset.dy) > (constraints.maxHeight - 60)) {
-                                _top = (constraints.maxHeight - 140);
-                              } else if ((offset.dy) < 60) {
-                                _top = 0;
-                              } else {
-                                _top = _top + offset.dy - 60.0;
-                              }
-
-                              if ((offset.dx) > (constraints.maxWidth - 60)) {
-                                _left = (constraints.maxWidth - 140);
-                              } else if ((offset.dx) < 60) {
-                                _left = 0;
-                              } else {
-                                _left = _left + offset.dx - 60.0;
-                              }
-
-                              setState(() {
-                                _balancePosition = Offset(_left, _top);
-                              });
-                            },
-                            feedback: Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Colors.black38,
-                              ),
-                              child: Material(
-                                color: Colors.transparent,
-                                child: Text(
-                                  'Balance: 10000\$',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ),
-                            child: Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Colors.black38,
-                              ),
-                              child: Text(
-                                'Balance: 10000\$',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.black54,
                         ),
-                        // Profile Pci
-                        Positioned(
-                          top: _profilePosition.dy,
-                          left: _profilePosition.dx == 20
-                              ? (constraints.maxWidth - 150)
-                              : _profilePosition.dx,
-                          child: Draggable(
-                            onDraggableCanceled:
-                                (Velocity velocity, Offset offset) {
-                              double _top = 0, _left = 0;
-                              if ((offset.dy) > (constraints.maxHeight - 60)) {
-                                _top = (constraints.maxHeight - 140);
-                              } else if ((offset.dy) < 60) {
-                                _top = 0;
-                              } else {
-                                _top = _top + offset.dy - 60.0;
-                              }
-
-                              if ((offset.dx) > (constraints.maxWidth - 60)) {
-                                _left = (constraints.maxWidth - 140);
-                              } else if ((offset.dx) < 60) {
-                                _left = 0;
-                              } else {
-                                _left = _left + offset.dx - 60.0;
-                              }
-
-                              setState(() {
-                                _profilePosition = Offset(_left, _top);
-                              });
-                            },
-                            feedback: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/image/sample_people_2.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(30),
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 5,
-                                ),
-                              ),
-                            ),
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/image/sample_people_2.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(30),
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 5,
-                                ),
-                              ),
-                            ),
-                          ),
+                        child: SelectableText(
+                          'Wallet Address:    X-avax12c4fgp3gqpxccddkk592z3fsjsphpmea7s2lhj',
+                          style: TextStyle(color: Colors.white),
                         ),
-                        Positioned(
-                          bottom: 20,
-                          child: Row(
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/image/sample_people_1.jpg'),
+                              fit: BoxFit.cover,
+                            ),
+                            color: Colors.grey[400],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            alignment: Alignment.center,
                             children: [
-                              _called
-                                  ? FloatingActionButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          _showFrontSide = true;
-                                          _called = false;
-                                        });
-                                      },
-                                      backgroundColor: Colors.red,
-                                      child: Icon(Icons.call_end),
-                                    )
-                                  : FloatingActionButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          _showFrontSide = false;
-                                          _called = true;
-                                        });
-                                      },
-                                      backgroundColor: Colors.green,
-                                      child: Icon(Icons.call),
+                              // Profile Pci
+                              Positioned(
+                                top: _profilePosition.dy,
+                                left: _profilePosition.dx == 20
+                                    ? (constraints.maxWidth - 150)
+                                    : _profilePosition.dx,
+                                child: Draggable(
+                                  onDraggableCanceled:
+                                      (Velocity velocity, Offset offset) {
+                                    double _top = 0, _left = 0;
+                                    if ((offset.dy) >
+                                        (constraints.maxHeight - 60)) {
+                                      _top = (constraints.maxHeight - 150);
+                                    } else if ((offset.dy) < 60) {
+                                      _top = 0;
+                                    } else {
+                                      _top = _top + offset.dy - 110.0;
+                                    }
+
+                                    if ((offset.dx) >
+                                        (constraints.maxWidth - 60)) {
+                                      _left = (constraints.maxWidth - 140);
+                                    } else if ((offset.dx) < 60) {
+                                      _left = 0;
+                                    } else {
+                                      _left = _left + offset.dx - 65.0;
+                                    }
+
+                                    setState(() {
+                                      _profilePosition = Offset(_left, _top);
+                                    });
+                                  },
+                                  feedback: Container(
+                                    height: 120,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/image/sample_people_2.jpg'),
+                                        fit: BoxFit.cover,
+                                      ),
+                                      borderRadius: BorderRadius.circular(30),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 5,
+                                      ),
                                     ),
-                              SizedBox(width: 30),
-                              FloatingActionButton(
-                                onPressed: () {},
-                                backgroundColor: Colors.blue,
-                                child: Icon(Icons.skip_next_rounded),
+                                  ),
+                                  child: Container(
+                                    height: 120,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/image/sample_people_2.jpg'),
+                                        fit: BoxFit.cover,
+                                      ),
+                                      borderRadius: BorderRadius.circular(30),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 5,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 20,
+                                child: Row(
+                                  children: [
+                                    _called
+                                        ? FloatingActionButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                _showFrontSide = true;
+                                                _called = false;
+                                              });
+                                            },
+                                            backgroundColor: Colors.red,
+                                            child: Icon(Icons.call_end),
+                                          )
+                                        : FloatingActionButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                _showFrontSide = false;
+                                                _called = true;
+                                              });
+                                            },
+                                            backgroundColor: Colors.green,
+                                            child: Icon(Icons.call),
+                                          ),
+                                    SizedBox(width: 30),
+                                    FloatingActionButton(
+                                      onPressed: () {},
+                                      backgroundColor: Colors.blue,
+                                      child: Icon(Icons.skip_next_rounded),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ],
             ),
           ),
           // side bar
@@ -365,7 +352,7 @@ class _VideoChatScreenState extends State<VideoChatScreen> {
             flex: 1,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.green[200],
+                color: Colors.blue[400],
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Row(
@@ -376,12 +363,12 @@ class _VideoChatScreenState extends State<VideoChatScreen> {
                   Expanded(
                     child: TextFormField(
                       controller: _messageController,
+                      style: TextStyle(fontSize: 12, color: Colors.white),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 8),
-                        labelStyle: TextStyle(fontSize: 12),
                         hintText: 'Write your message..',
-                        hintStyle: TextStyle(fontSize: 12),
-                        hoverColor: Colors.grey[100],
+                        hintStyle: TextStyle(fontSize: 12, color: Colors.white),
+                        hoverColor: Colors.white,
                         border: InputBorder.none,
                       ),
                       onFieldSubmitted: (val) {
@@ -418,73 +405,54 @@ class _VideoChatScreenState extends State<VideoChatScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // top gender
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-                decoration: BoxDecoration(
-                  color: Colors.green[200],
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Connect with',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 14, color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      height: 30,
-                      child: ListView(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          children: _oppGender
-                              .map(
-                                (e) => Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 5, right: 5),
-                                  child: GFButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _selectedOppGender = e;
-                                      });
-                                    },
-                                    color: e == _selectedOppGender
-                                        ? Colors.red[400]
-                                        : Colors.white24,
-                                    text: '$e',
-                                    hoverElevation: 0,
-                                    textColor: e == _selectedOppGender
-                                        ? Colors.white
-                                        : Colors.black,
-                                    shape: GFButtonShape.pills,
-                                  ),
-                                ),
-                              )
-                              .toList()),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(8),
-                child: GFButton(
-                  onPressed: () {},
+          Container(
+            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+            decoration: BoxDecoration(
+              color: Colors.green[200],
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Wallet Address: \nXavax12c4fgp3gqpxccddkk592z3fsjsphpmea7s2lhj',
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(color: Colors.black, fontSize: 12),
+                    'Connect with',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 14, color: Colors.black),
                   ),
-                  padding: EdgeInsets.all(4),
-                  color: Colors.green[200],
                 ),
-              ),
-            ],
+                Container(
+                  height: 30,
+                  child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      children: _oppGender
+                          .map(
+                            (e) => Padding(
+                              padding: const EdgeInsets.only(left: 5, right: 5),
+                              child: GFButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _selectedOppGender = e;
+                                  });
+                                },
+                                color: e == _selectedOppGender
+                                    ? Colors.red[400]
+                                    : Colors.white24,
+                                text: '$e',
+                                hoverElevation: 0,
+                                textColor: e == _selectedOppGender
+                                    ? Colors.white
+                                    : Colors.black,
+                                shape: GFButtonShape.pills,
+                              ),
+                            ),
+                          )
+                          .toList()),
+                ),
+              ],
+            ),
           ),
 
           Container(
