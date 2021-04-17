@@ -10,12 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Diva Roulette',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      onGenerateRoute: router.generateRoute,
-      initialRoute: LandingPageRoute,
-    );
+        title: 'Diva Roulette',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        onGenerateRoute: router.generateRoute,
+        initialRoute: LandingPageRoute);
   }
 }

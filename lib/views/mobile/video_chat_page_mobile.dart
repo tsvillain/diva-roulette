@@ -13,14 +13,8 @@ class _VideoChatPageMobileState extends State<VideoChatPageMobile> {
   bool _showFrontSide = true;
   bool _called = false;
   final _key = GlobalKey<AutoCompleteTextFieldState<String>>();
-  final List<String> _gender = ['Male', 'Female', 'Gay', 'Lesbian', 'Other'];
-  final List<String> _oppGender = [
-    'Male',
-    'Female',
-    'Gay',
-    'Lesbian',
-    'Everyone'
-  ];
+  final List<String> _gender = ['Male', 'Female', 'Other'];
+  final List<String> _oppGender = ['Male', 'Female', 'Everyone'];
   List<String> _suggestInterest = [
     'Singing',
     'Acting',
@@ -142,6 +136,15 @@ class _VideoChatPageMobileState extends State<VideoChatPageMobile> {
                             bottom: 20,
                             child: Row(
                               children: [
+                                FloatingActionButton(
+                                  mini: true,
+                                  onPressed: () {},
+                                  backgroundColor: Colors.redAccent,
+                                  child: Icon(
+                                    Icons.favorite_rounded,
+                                  ),
+                                ),
+                                SizedBox(width: 30),
                                 _called
                                     ? FloatingActionButton(
                                         onPressed: () {
@@ -163,11 +166,20 @@ class _VideoChatPageMobileState extends State<VideoChatPageMobile> {
                                         backgroundColor: Colors.green,
                                         child: Icon(Icons.call),
                                       ),
-                                SizedBox(width: 30),
+                                SizedBox(width: 15),
                                 FloatingActionButton(
                                   onPressed: () {},
                                   backgroundColor: Colors.blue,
                                   child: Icon(Icons.skip_next_rounded),
+                                ),
+                                SizedBox(width: 30),
+                                FloatingActionButton(
+                                  mini: true,
+                                  onPressed: () {},
+                                  backgroundColor: Colors.amber,
+                                  child: Icon(
+                                    Icons.sentiment_satisfied_alt_rounded,
+                                  ),
                                 ),
                               ],
                             ),
@@ -346,55 +358,76 @@ class _VideoChatPageMobileState extends State<VideoChatPageMobile> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // connect with gender
-          Container(
-            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-            decoration: BoxDecoration(
-              color: Colors.green[200],
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Connect with',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 14, color: Colors.black),
-                  ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_rounded,
+                      size: 14,
+                    ),
+                    hoverColor: Colors.transparent,
+                    onPressed: () {
+                      setState(() {
+                        _showFrontSide = !_showFrontSide;
+                      });
+                    }),
+              ),
+              // connect with gender
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                decoration: BoxDecoration(
+                  color: Colors.green[200],
+                  borderRadius: BorderRadius.circular(5),
                 ),
-                Container(
-                  height: 30,
-                  child: ListView(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      children: _oppGender
-                          .map(
-                            (e) => Padding(
-                              padding: const EdgeInsets.only(left: 5, right: 5),
-                              child: GFButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _selectedOppGender = e;
-                                  });
-                                },
-                                color: e == _selectedOppGender
-                                    ? Colors.red[400]
-                                    : Colors.white24,
-                                text: '$e',
-                                hoverElevation: 0,
-                                textColor: e == _selectedOppGender
-                                    ? Colors.white
-                                    : Colors.black,
-                                shape: GFButtonShape.pills,
-                              ),
-                            ),
-                          )
-                          .toList()),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Connect with',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 14, color: Colors.black),
+                      ),
+                    ),
+                    Container(
+                      height: 30,
+                      child: ListView(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          children: _oppGender
+                              .map(
+                                (e) => Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 5, right: 5),
+                                  child: GFButton(
+                                    padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                                    onPressed: () {
+                                      setState(() {
+                                        _selectedOppGender = e;
+                                      });
+                                    },
+                                    color: e == _selectedOppGender
+                                        ? Colors.red[400]
+                                        : Colors.white24,
+                                    text: '$e',
+                                    hoverElevation: 0,
+                                    textColor: e == _selectedOppGender
+                                        ? Colors.white
+                                        : Colors.black,
+                                    shape: GFButtonShape.pills,
+                                  ),
+                                ),
+                              )
+                              .toList()),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           // Interests
           Container(
