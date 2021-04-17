@@ -84,7 +84,7 @@ class _VideoChatPageDesktopState extends State<VideoChatPageDesktop> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _walletCard("10000\$"),
+                      _walletCard("Balance: 10000\$"),
                       _walletCard(
                           "Wallet Address:    X-avax12c4fgp3gqpxccddkk592z3fsjsphpmea7s2lhj"),
                     ],
@@ -363,7 +363,55 @@ class _VideoChatPageDesktopState extends State<VideoChatPageDesktop> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // connect with gender
-          _genderContainer('Connect with', _oppGender, _selectedOppGender),
+          Container(
+            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+            decoration: BoxDecoration(
+              color: Colors.green[200],
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Connect with',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 14, color: Colors.black),
+                  ),
+                ),
+                Container(
+                  height: 30,
+                  child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      children: _oppGender
+                          .map(
+                            (e) => Padding(
+                              padding: const EdgeInsets.only(left: 5, right: 5),
+                              child: GFButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _selectedOppGender = e;
+                                  });
+                                },
+                                color: e == _selectedOppGender
+                                    ? Colors.red[400]
+                                    : Colors.white24,
+                                text: '$e',
+                                hoverElevation: 0,
+                                textColor: e == _selectedOppGender
+                                    ? Colors.white
+                                    : Colors.black,
+                                shape: GFButtonShape.pills,
+                              ),
+                            ),
+                          )
+                          .toList()),
+                ),
+              ],
+            ),
+          ),
           // Interests
           Container(
             padding: EdgeInsets.all(8),
@@ -426,57 +474,54 @@ class _VideoChatPageDesktopState extends State<VideoChatPageDesktop> {
             ),
           ),
           // i am Gender
-          _genderContainer('I am..', _gender, _selectedGender),
-        ],
-      ),
-    );
-  }
-
-  // Gender Container
-  Widget _genderContainer(String title, List<String> gender, String selected) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
-      decoration: BoxDecoration(
-        color: Colors.green[200],
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              '$title',
-              textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 14, color: Colors.black),
-            ),
-          ),
           Container(
-            height: 30,
-            child: ListView(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                children: gender
-                    .map(
-                      (e) => Padding(
-                        padding: const EdgeInsets.only(left: 5, right: 5),
-                        child: GFButton(
-                          onPressed: () {
-                            setState(() {
-                              selected = e;
-                            });
-                          },
-                          color:
-                              e == selected ? Colors.red[400] : Colors.white24,
-                          text: '$e',
-                          hoverElevation: 0,
-                          textColor:
-                              e == selected ? Colors.white : Colors.black,
-                          shape: GFButtonShape.pills,
-                        ),
-                      ),
-                    )
-                    .toList()),
+            padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+            decoration: BoxDecoration(
+              color: Colors.green[200],
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'I am..',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 12, color: Colors.black),
+                  ),
+                ),
+                Container(
+                  height: 30,
+                  child: ListView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      children: _gender
+                          .map(
+                            (e) => Padding(
+                              padding: const EdgeInsets.only(left: 5, right: 5),
+                              child: GFButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _selectedGender = e;
+                                  });
+                                },
+                                color: e == _selectedGender
+                                    ? Colors.red[400]
+                                    : Colors.white24,
+                                text: '$e',
+                                hoverElevation: 0,
+                                textColor: e == _selectedGender
+                                    ? Colors.white
+                                    : Colors.black,
+                                shape: GFButtonShape.pills,
+                              ),
+                            ),
+                          )
+                          .toList()),
+                ),
+              ],
+            ),
           ),
         ],
       ),

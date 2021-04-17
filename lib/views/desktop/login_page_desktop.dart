@@ -1,3 +1,4 @@
+import 'package:diva_roulette/helpers/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 
@@ -66,7 +67,12 @@ class _LoginPageDesktopState extends State<LoginPageDesktop> {
                     ),
                     SizedBox(height: 50),
                     GFButton(
-                      onPressed: phaseWord.length == 24 ? () {} : null,
+                      onPressed: phaseWord.length == 24
+                          ? () {
+                              Navigator.pushReplacementNamed(
+                                  context, VideoChatRoute);
+                            }
+                          : null,
                       text: 'ACCESS',
                     ),
                     MaterialButton(
